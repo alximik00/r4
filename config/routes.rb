@@ -1,6 +1,9 @@
 R4::Application.routes.draw do
+  resources :posts
+
   root to: "home#index"
   match '/home'=>'home#index'
+  match '/about'=>'home#about', :as => :home_about
 
   resources :users
 

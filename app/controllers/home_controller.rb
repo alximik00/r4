@@ -6,4 +6,7 @@ class HomeController < ApplicationController
     @sample = Uv.parse( text, "xhtml", "ruby", true, "twilight")
     render 'home/index'
   end
+
+  def about
+  end
 end
