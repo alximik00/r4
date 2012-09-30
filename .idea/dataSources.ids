@@ -2,6 +2,8 @@
   <data-source source="LOCAL" name="Rails r4: development" product="" version="" jdbc-version="" driver-name="" driver-version="" uuid="61dd8684-14e2-4760-abb5-8fb8e3c37cf6">
     <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
     <jdbc-url>jdbc:mysql://127.0.0.1/r4_dev</jdbc-url>
+    <user-name>r4_user</user-name>
+    <user-password>dfd8df9edff5dfdadfcbdfd9dfd9dfdddfc5dfd8dfce</user-password>
     <libraries>
       <library>
         <url>file://$USER_HOME$/.RubyMine40/config/jdbc-drivers/mysql-connector-license.txt</url>

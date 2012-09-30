@@ -1,3 +1,6 @@
+- content_for(:head) do
+  %script{:src=>'/assets/posts.js'}
+
 = form_for @post do |f|
   - if @post.errors.any?
     #error_explanation
@@ -5,13 +8,18 @@
       %ul
         - @post.errors.full_messages.each do |msg|
           %li= msg
-
+  = f.hidden_field :lang_id
   .field
     = f.label :title
     = f.text_field :title
   .field
     = f.label :description
     = f.text_field :description
+
+  #lang_selection.btn-group{:'data-toggle' => 'buttons-radio' }
+    - Post::LANGS.each do |k,v|
+      %button.btn{:type=>'button', :lang_id=>v, :class=>@post.lang_id==v ? 'active':''}= k.humanize
+
   .field
     = f.label :body
     = f.text_area :body
