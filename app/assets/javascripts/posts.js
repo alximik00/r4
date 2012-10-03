@@ -4,4 +4,24 @@ $(document).ready(function(){
         var el = $(this);
         $('#post_lang_id').attr('value', el.attr('lang_id'));
     });
+
+    $('#edit_preview_button').click(function(e){
+        var lang_id = $('#post_lang_id').attr('value') ;
+        var body =  $('#post_body').text();
+
+        $('#preview_lang_id').attr('value', lang_id);
+        $('#preview_body').attr('value', body);
+        $('#preview_form').submit();
+        e.preventDefault();
+
+        return false;
+    });
+
+    $('#edit_confirm_button').click(function(){
+
+    });
+
+    $('#edit_discard_button').click(function(){
+
+    });
 });

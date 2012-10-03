@@ -16,13 +16,18 @@ class Post < ActiveRecord::Base
     end
   end
 
-  def test1
-    self.class.constants(false).each do |const|
-      puts const
-    end
+  belongs_to :user
+  attr_accessor :user_email
+
+  validates_presence_of :description, :title, :body
+
+  def decided?
+    self.confirmed? && self.discarded?
   end
 
-  belongs_to :user
+  def self.lang_by_id(id)
+    lang,_ = LANGS.detect {|k,v| v.to_s == id.to_s}
+    lang
+  end
 
-  attr_accessor :user_email
 end

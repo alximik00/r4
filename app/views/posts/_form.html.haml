@@ -1,14 +1,16 @@
 - content_for(:head) do
   %script{:src=>'/assets/posts.js'}
-
 = form_for @post do |f|
   - if @post.errors.any?
     #error_explanation
-      %h2= "#{pluralize(@post.errors.count, "error")} prohibited this post from being saved:"
       %ul
         - @post.errors.full_messages.each do |msg|
-          %li= msg
+          %li.error= msg
   = f.hidden_field :lang_id
+  - if @post.new_record?
+    .field
+      = f.label 'Your email'
+      = f.text_field :user_email, :value => @post.user_email
   .field
     = f.label :title
     = f.text_field :title
@@ -19,12 +21,22 @@
   #lang_selection.btn-group{:'data-toggle' => 'buttons-radio' }
     - Post::LANGS.each do |k,v|
       %button.btn{:type=>'button', :lang_id=>v, :class=>@post.lang_id==v ? 'active':''}= k.humanize
-
+  %br
   .field
     = f.label :body
-    = f.text_area :body
-  .field
-    = f.label :user_email
-    = f.text_field :user_email
+    = f.text_area :body, :class=>'code_input'
   .actions
-    = f.submit 'Save'
+    = f.submit '  Save  ', :class=>'btn btn-primary btn-large'
+    %span.spacer
+    %a{:href=>posts_preview_path, :class=>'btn btn-large',   :id=>'edit_preview_button'}  Preview
+    %span.spacer
+    - unless @post.decided?
+      %a{:href=>posts_confirm_path, :class=>'btn btn-success', :id=>'edit_confirm_button'}  Confirm
+    %a{:href=>posts_discard_path, :class=>'btn btn-danger',  :id=>'edit_discard_button'}  Discard
+
+.hidden
+  %form{:id=>"preview_form", :action=>posts_preview_path, :method=>'post', :target=>"_blank"}
+    %textarea{:id=>"preview_body", :name=>"preview_body"}
+    %input{:id=>"preview_lang_id", :type=>'text', :name=>"preview_lang_id"}
+
+

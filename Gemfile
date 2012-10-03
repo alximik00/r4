@@ -35,5 +35,9 @@ group :test do
   gem "fakeweb"
 end
 
+group :development do
+  gem 'mongrel', :platforms => :ruby , :require => false
+end
+
 gem "rspec", "2.7", :group => [:development, :test]
 gem "rspec-rails", "2.7", :group => [:development, :test]

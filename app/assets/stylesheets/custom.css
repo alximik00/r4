@@ -80,8 +80,16 @@ h1 {
     width: 40px;
 }
 
-#code_input {
+.code_input {
     width: 800px;
+}
+
+.error {
+    color: darkred;
+}
+
+.notice {
+    color: #006f00;
 }
 
 @media (max-width: 980px) {

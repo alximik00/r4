@@ -1,10 +1,13 @@
 R4::Application.routes.draw do
-  resources :posts
-
   root to: "home#index"
   match '/home'=>'home#index'
   match '/about'=>'home#about', :as => :home_about
 
+  match '/posts/preview' => 'posts#preview', :as => :posts_preview
+  match '/posts/confirm' => 'posts#confirm', :as => :posts_confirm
+  match '/posts/discard' => 'posts#discard', :as => :posts_discard
+
+  resources :posts
   resources :users
 
   # The priority is based upon order of creation:
