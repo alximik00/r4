@@ -16,7 +16,7 @@
     = f.text_field :title
   .field
     = f.label :description
-    = f.text_field :description
+    = f.text_area :description
 
   #lang_selection.btn-group{:'data-toggle' => 'buttons-radio' }
     - Post::LANGS.each do |k,v|
@@ -24,7 +24,7 @@
   %br
   .field
     = f.label :body
-    = f.text_area :body, :class=>'code_input'
+    = f.text_area :raw_body, :class=>'code_input', :value=>@post.raw_body || @post.body
   .actions
     = f.submit '  Save  ', :class=>'btn btn-primary btn-large'
     %span.spacer
@@ -37,6 +37,8 @@
 .hidden
   %form{:id=>"preview_form", :action=>posts_preview_path, :method=>'post', :target=>"_blank"}
     %textarea{:id=>"preview_body", :name=>"preview_body"}
-    %input{:id=>"preview_lang_id", :type=>'text', :name=>"preview_lang_id"}
+    - if is_admin?
+      %input{:id=>"preview_lang_id", :type=>'text', :name=>"preview_lang_id"}
+      %input{:td=>"preview_ts", :name=>"preview_ts", :type=>'text'}
 
 

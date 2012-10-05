@@ -1,25 +1,5 @@
-%h1 Listing posts
-
-%table
-  %tr
-    %th User
-    %th Description
-    %th Body
-    %th Title
-    %th
-    %th
-    %th
-
+.span9
   - @posts.each do |post|
-    %tr
-      %td= post.user_id
-      %td= post.description
-      %td= post.body
-      %td= post.title
-      %td= link_to 'Show', post
-      %td= link_to 'Edit', edit_post_path(post)
-      %td= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }
+    =render post
 
-%br
-
-= link_to 'New Post', new_post_path
+=render 'preview_area'

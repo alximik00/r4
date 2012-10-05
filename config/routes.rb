@@ -6,6 +6,7 @@ R4::Application.routes.draw do
   match '/posts/preview' => 'posts#preview', :as => :posts_preview
   match '/posts/confirm' => 'posts#confirm', :as => :posts_confirm
   match '/posts/discard' => 'posts#discard', :as => :posts_discard
+  match '/posts/popular' => 'posts#index', :as=>:posts_popular, :mode=>:popular
 
   resources :posts
   resources :users

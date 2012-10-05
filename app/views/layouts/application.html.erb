@@ -33,12 +33,13 @@
           <a class="brand" href="#">RoR Receipts</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li class="active"><a href="<%= posts_path %>">Home</a></li>
-              <li><a href="#about">Most popular</a></li>
-              <li><a href="#contact">Recent</a></li>
-              <li><a href="<%= home_about_path %>">About</a></li>
-              <li class="divider-vertical"></li>
-              <li><a href="<%= new_post_path %>">Suggest New</a></li>
+              <% menu_urls.each do |path, name| %>
+                  <li class="<%= url_for == path ? 'active': ''%>" >
+                    <a href="<%= path %>"> <%= name %></a>
+                  </li>
+              <% end %>
+
+
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -52,7 +53,7 @@
         <% end %>
 
         <% if flash[:error] %>
-            <div class="error"><%= flash[:error] %></div>
+            <div class="alert"><%= flash[:error] %></div>
         <% end %>
 
         <%= yield %>

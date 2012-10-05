@@ -1,44 +1,23 @@
 class PostsController < ApplicationController
   # GET /posts
-  # GET /posts.json
   def index
     @posts = Post.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @posts }
-    end
+    @popular_posts = Post.all
   end
 
   # GET /posts/1
-  # GET /posts/1.json
   def show
     @post = Post.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @post }
-    end
+    @post.update_attribute(:views_count, @post.views_count + 1)
+    @popular_posts = Post.all
   end
 
   # GET /posts/new
-  # GET /posts/new.json
   def new
     @post = Post.new(:lang_id => Post::LANGS[:ruby])
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @post }
-    end
-  end
-
-  # GET /posts/1/edit
-  def edit
-    @post = Post.find(params[:id])
   end
 
   # POST /posts
-  # POST /posts.json
   def create
     email = params[:post][:user_email]
     @post = Post.new(params[:post])
@@ -51,31 +30,32 @@ class PostsController < ApplicationController
       return
     end
 
-    if @post.valid? && (@post.save)
+    format_body(@post)
+    if @post.save
       redirect_to @post, notice: 'Post was successfully created.'
     else
       render action: "new"
     end
   end
 
+  # GET /posts/1/edit
+  def edit
+    @post = Post.find(params[:id])
+  end
+
   # PUT /posts/1
-  # PUT /posts/1.json
   def update
     @post = Post.find(params[:id])
 
-    respond_to do |format|
-      if @post.update_attributes(params[:post])
-        format.html { redirect_to @post, notice: 'Post was successfully updated.' }
-        format.json { head :ok }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
-      end
+    format_body_for_hash(params[:post])
+    if @post.update_attributes(params[:post])
+      redirect_to @post, notice: 'Post was successfully updated.'
+    else
+      render action: "edit"
     end
   end
 
   # DELETE /posts/1
-  # DELETE /posts/1.json
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
@@ -92,5 +72,20 @@ class PostsController < ApplicationController
     lang = Post.lang_by_id(lang_id).to_s.downcase
     @sample = Uv.parse( text, "xhtml", lang, true, "twilight")
     render 'preview', :layout=>'preview'
+  end
+
+  private
+  def format_body(post)
+    lang = Post.lang_by_id(post.lang_id).to_s.downcase
+    post.body = Uv.parse( post.raw_body, "xhtml", lang, true, "twilight")
+    preview = Uv.parse( post.raw_body, "xhtml", lang, false, "twilight")
+    post.preview_text = preview.each_line.take(10).join
+  end
+
+  def format_body_for_hash(params)
+    lang = Post.lang_by_id(params[:lang_id]).to_s.downcase
+    params[:body ] = Uv.parse( params[:raw_body], "xhtml", lang, true, "twilight")
+    preview = Uv.parse( params[:raw_body], "xhtml", lang, false, "twilight")
+    params[:preview_text] = preview.each_line.take(10).join
   end
 end

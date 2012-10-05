@@ -1,0 +1,10 @@
+.span3
+  .preview_bar
+    %h3 All
+    %ul.thumbnails
+      -@popular_posts.each do |post|
+        %a.thumbnail{:href=> post_path(post)}
+          .code_example
+            .code_example_inner
+              .preview_title= post.title
+              = post.preview_text.html_safe

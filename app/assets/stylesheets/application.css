@@ -5,11 +5,9 @@
  *= require bootstrap
  *= require bootstrap-responsive
  *= require docs
- *= require custom
- *= require uvthemes/twilight
- *= require_self
  *= require_tree
-
+ *= require_self
+ *= require custom
 */
 
 

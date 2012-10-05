@@ -1,3 +1,22 @@
 // Place all the styles related to the Posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#post_title {
+
+}
+
+#post_description {
+  width: 600px;
+  height: 50px;
+}
+
+#new_post input[type='text'] {
+  width: 600px;
+}
+
+@media (max-width: 980px) {
+  #post_title {
+    width: 80%;
+  }
+}
