@@ -4,10 +4,17 @@
 
     .page-header
       %h1= @post.title
-    %p.lead= @post.description
 
     = @post.body.html_safe
   -if is_admin?
-    = link_to 'Edit', edit_post_path(@post)
+    = link_to 'Edit', edit_post_path(@post), :class=>'btn btn-primary '
+    %span.spacer
+    - unless @post.confirmed?
+      %a{:href=>posts_confirm_path(:id=>@post.id), :class=>'btn btn-success', :id=>'edit_confirm_button'}  Confirm
+    - if @post.confirmed
+      %a{:href=>posts_discard_path(:id=>@post.id), :class=>'btn btn-danger',  :id=>'edit_discard_button'}  Discard
 
 =render 'preview_area'
+
+:javascript
+  window.postId = '#{@post.id}';

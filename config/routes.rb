@@ -7,6 +7,8 @@ R4::Application.routes.draw do
   match '/posts/confirm' => 'posts#confirm', :as => :posts_confirm
   match '/posts/discard' => 'posts#discard', :as => :posts_discard
   match '/posts/popular' => 'posts#index', :as=>:posts_popular, :mode=>:popular
+  match '/posts/all' => 'posts#index', :as=>:posts_all, :mode=>:all
+
 
   resources :posts
   resources :users

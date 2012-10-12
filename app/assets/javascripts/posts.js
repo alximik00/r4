@@ -18,12 +18,4 @@ $(document).ready(function(){
 
         return false;
     });
-
-    $('#edit_confirm_button').click(function(){
-
-    });
-
-    $('#edit_discard_button').click(function(){
-
-    });
 });

@@ -19,7 +19,8 @@ class Post < ActiveRecord::Base
   belongs_to :user
   attr_accessor :user_email
 
-  validates_presence_of :description, :title, :body
+  default_scope :conditions=>{:confirmed=>true}
+  scope :popular, :order=>'views_count DESC'
 
   def decided?
     self.confirmed? && self.discarded?

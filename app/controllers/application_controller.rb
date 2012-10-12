@@ -8,11 +8,18 @@ class ApplicationController < ActionController::Base
 
   helper_method :menu_urls
   def menu_urls
-    @menu_urls ||= {
+    urls = {
         posts_path => 'Home',
-        posts_popular_path => 'Popular',
+        posts_popular_path => 'Most read',
         home_about_path => 'About',
-        new_post_path => 'Suggest new'
     }
+
+    admin_urls = {}
+    if is_admin?
+      admin_urls[posts_all_path] =   'All'
+      admin_urls[new_post_path] = 'New post'
+    end
+
+    {:menu=>urls, :admin_menu=>admin_urls }
   end
 end

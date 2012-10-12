@@ -1,20 +1,26 @@
 class PostsController < ApplicationController
   # GET /posts
   def index
-    @posts = Post.all
+    @posts =
+      case params[:mode]
+        when :all then Post.unscoped.all
+        when :popular then Post.popular
+        else Post.all
+      end
     @popular_posts = Post.all
   end
 
   # GET /posts/1
   def show
-    @post = Post.find(params[:id])
+    @post = get_post
+
     @post.update_attribute(:views_count, @post.views_count + 1)
-    @popular_posts = Post.all
+    fetch_popular
   end
 
   # GET /posts/new
   def new
-    @post = Post.new(:lang_id => Post::LANGS[:ruby])
+    @post = Post.new(:confirmed=>false)
   end
 
   # POST /posts
@@ -40,12 +46,12 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
-    @post = Post.find(params[:id])
+    @post = get_post
   end
 
   # PUT /posts/1
   def update
-    @post = Post.find(params[:id])
+    @post = get_post
 
     format_body_for_hash(params[:post])
     if @post.update_attributes(params[:post])
@@ -57,7 +63,7 @@ class PostsController < ApplicationController
 
   # DELETE /posts/1
   def destroy
-    @post = Post.find(params[:id])
+    @post = get_post
     @post.destroy
 
     respond_to do |format|
@@ -67,25 +73,48 @@ class PostsController < ApplicationController
   end
 
   def preview
-    text = params[:preview_body]
-    lang_id =  params[:preview_lang_id]
-    lang = Post.lang_by_id(lang_id).to_s.downcase
-    @sample = Uv.parse( text, "xhtml", lang, true, "twilight")
+    @sample = Render.render_html(params[:preview_body])
     render 'preview', :layout=>'preview'
   end
 
+  def confirm
+    @post = get_post
+    @post.update_attribute(:confirmed, true)
+    fetch_popular
+
+    flash[:notice] = "Confirmed"
+    render :show
+  end
+
+  def discard
+    @post = get_post
+    @post.update_attribute(:confirmed,  false)
+    fetch_popular
+
+    flash[:notice] = "Discarded"
+    render :show
+  end
+
   private
+  def get_post
+    if is_admin?
+      @post = Post.unscoped.find(params[:id])
+    else
+      @post = Post.find(params[:id])
+    end
+  end
+
+  def fetch_popular
+    @popular_posts = Post.popular.limit(10)
+  end
+
   def format_body(post)
-    lang = Post.lang_by_id(post.lang_id).to_s.downcase
-    post.body = Uv.parse( post.raw_body, "xhtml", lang, true, "twilight")
-    preview = Uv.parse( post.raw_body, "xhtml", lang, false, "twilight")
-    post.preview_text = preview.each_line.take(10).join
+    post.body = Render.render_html(post.raw_body)
+    post.preview_text = post.body.each_line.take(10).join
   end
 
   def format_body_for_hash(params)
-    lang = Post.lang_by_id(params[:lang_id]).to_s.downcase
-    params[:body ] = Uv.parse( params[:raw_body], "xhtml", lang, true, "twilight")
-    preview = Uv.parse( params[:raw_body], "xhtml", lang, false, "twilight")
-    params[:preview_text] = preview.each_line.take(10).join
+    params[:body ] = Render.render_html(params[:raw_body])
+    params[:preview_text] = params[:body ].each_line.take(10).join
   end
 end

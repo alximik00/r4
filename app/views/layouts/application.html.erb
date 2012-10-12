@@ -33,7 +33,13 @@
           <a class="brand" href="#">RoR Receipts</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <% menu_urls.each do |path, name| %>
+              <% menu_urls[:menu].each do |path, name| %>
+                  <li class="<%= url_for == path ? 'active': ''%>" >
+                    <a href="<%= path %>"> <%= name %></a>
+                  </li>
+              <% end %>
+              <li class="divider-vertical"></li>
+              <% menu_urls[:admin_menu].each do |path, name| %>
                   <li class="<%= url_for == path ? 'active': ''%>" >
                     <a href="<%= path %>"> <%= name %></a>
                   </li>

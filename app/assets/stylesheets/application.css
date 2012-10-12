@@ -5,6 +5,7 @@
  *= require bootstrap
  *= require bootstrap-responsive
  *= require docs
+ *= require code
  *= require_tree
  *= require_self
  *= require custom
