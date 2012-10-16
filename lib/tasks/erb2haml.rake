@@ -5,6 +5,8 @@ task :erb2haml do
     puts file
     # for each .erb file in the path, convert it & output to a .haml file
     output_file = file.gsub(/\.erb$/, '.haml')
-    `rm #{file}` if `bundle exec html2haml -ex #{file} #{output_file}` unless File.exist?(output_file)
+    unless File.exist?(output_file)
+      `rm #{file}` if `bundle exec html2haml -ex #{file} #{output_file}`
+    end
   end
 end
