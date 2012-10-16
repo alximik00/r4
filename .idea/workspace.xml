@@ -2,17 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dc9283d9-fee6-421d-9d82-4a8a538f53d1" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/views/devise/mailer/confirmation_instructions.html.erb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/views/devise/mailer/reset_password_instructions.html.erb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/views/devise/mailer/unlock_instructions.html.erb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/views/devise/passwords/edit.html.erb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/views/devise/passwords/new.html.erb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/views/devise/registrations/edit.html.erb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/views/devise/shared/_links.erb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/views/devise/unlocks/new.html.erb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/views/layouts/application.html.erb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/views/layouts/preview.html.erb" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/tasks/erb2haml.rake" afterPath="$PROJECT_DIR$/lib/tasks/erb2haml.rake" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README" afterPath="$PROJECT_DIR$/README" />
     </list>
     <ignored path="r4.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -72,10 +62,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="erb2haml.rake" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="erb2haml.rake" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/tasks/erb2haml.rake">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="47" selection-start="488" selection-end="488" vertical-scroll-proportion="0.30962962">
+            <state line="11" column="56" selection-start="488" selection-end="488" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="README" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="86" selection-start="86" selection-end="86" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -85,7 +84,11 @@
         <entry file="mock:///Rails r4: development">
           <provider selected="true" editor-type-id="text-editor">
             <state line="0" column="20" selection-start="0" selection-end="19" vertical-scroll-proportion="-0.0">
-              <folding />
+              <folding>
+                <marker date="0" expanded="true" signature="0:19" placeholder="select * fro..posts..." />
+                <marker date="0" expanded="true" signature="22:41" placeholder="select * fro..users..." />
+                <marker date="0" expanded="true" signature="44:68" placeholder="update users..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -106,7 +109,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="/Rails r4: development" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/custom.css.scss" />
         <option value="$PROJECT_DIR$/app/models/post.rb" />
         <option value="$PROJECT_DIR$/config/initializers/kaminari_config.rb" />
@@ -122,6 +124,7 @@
         <option value="$PROJECT_DIR$/app/controllers/posts_controller.rb" />
         <option value="$PROJECT_DIR$/Gemfile" />
         <option value="$PROJECT_DIR$/lib/tasks/erb2haml.rake" />
+        <option value="$PROJECT_DIR$/README" />
       </list>
     </option>
   </component>
@@ -773,7 +776,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/tasks/erb2haml.rake">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="47" selection-start="488" selection-end="488" vertical-scroll-proportion="0.30962962">
+        <state line="11" column="56" selection-start="488" selection-end="488" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="86" selection-start="86" selection-end="86" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
