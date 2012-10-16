@@ -44,6 +44,7 @@ group :development do
   gem 'mongrel', :platforms => :ruby , :require => false
   gem 'haml-rails'
   gem 'hpricot'
+  gem 'ruby_parser'
 end
 
 gem "rspec", "2.7", :group => [:development, :test]
