@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121013195738) do
+ActiveRecord::Schema.define(:version => 20121016130845) do
 
   create_table "posts", :force => true do |t|
     t.integer  "user_id"
@@ -26,6 +26,8 @@ ActiveRecord::Schema.define(:version => 20121013195738) do
     t.text     "raw_body"
     t.text     "preview_text"
     t.integer  "views_count",  :default => 0,     :null => false
+    t.text     "shorten"
+    t.string   "cut"
   end
 
   create_table "users", :force => true do |t|

@@ -46,7 +46,7 @@
               <% end %>
             </ul>
             <% unless current_user || at_login_page? %>
-                <a href class="btn right login">Login</a>
+                <a href="<%= new_user_session_url %>" class="btn right login">Login</a>
             <% end %>
           </div><!--/.nav-collapse -->
         </div>
@@ -61,6 +61,10 @@
 
         <% if flash[:error] %>
             <div class="alert"><%= flash[:error] %></div>
+        <% end %>
+
+        <% if flash[:alert] %>
+            <div class="alert"><%= flash[:alert] %></div>
         <% end %>
 
         <%= yield %>
