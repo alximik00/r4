@@ -132,6 +132,19 @@ a.thumbnail {
 .right {
   float: right;
 }
+.vcenter_container {
+  display: table;
+  height: 40px;
+  #position: relative;
+  overflow: hidden;
+}
+
+.vcenter {
+  #position: absolute;
+  #top: 50%;
+  display: table-cell;
+  vertical-align: middle;
+}
 
 .login {
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.15);
@@ -154,6 +167,23 @@ a.thumbnail {
   background-color: #e1e1e1;
 }
 
+form .clearfix:before, form .clearfix:after {
+  display: inline;
+}
+
+.login label, .login input  {
+  margin-left: 4px;
+  margin-right: 4px;
+}
+
+blockquote {
+  border: dotted #BBB 1px;
+  padding: 5px 5px 5px 15px;
+}
+
+.post img {
+  border: #CCE solid thin;
+}
 @media (max-width: 980px) {
   body > .navbar-static-top .brand {
     float: left;

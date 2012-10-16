@@ -121,13 +121,20 @@ class PostsController < ApplicationController
     preview_post = preview_post.gsub('</a>', '</span>')
 
     post.preview_text = preview_post
+
+    cut_match = /(.*)\[cut\s+'(.+)'\s*\](.*)/.match(post.body)
+    if cut_match
+      post.shorten = cut_match[1]
+      post.cut = cut_match[2]
+      post.body = cut_match[1] + cut_match[3]
+    end
   end
 
-  def format_body_for_hash(params)
-    post = params[:raw_body]
-    params[:body ] = Render.render_html(post)
+  def format_body_for_hash(post_hash)
+    post_body = post_hash[:raw_body]
+    post_hash[:body ] = Render.render_html(post_body)
 
-    preview_post = post.each_line.take(10).join
+    preview_post = post_body.each_line.take(10).join
     preview_post+='```'  if preview_post.scan(/```/).size % 2 != 0
     preview_post+='`'  if preview_post.scan(/[^`]?`[^`]?/).size % 2 != 0
 
@@ -135,6 +142,13 @@ class PostsController < ApplicationController
     preview_post = preview_post.gsub('<a', '<span')
     preview_post = preview_post.gsub('</a>', '</span>')
 
-    params[:preview_text] = preview_post
+    post_hash[:preview_text] = preview_post
+
+    cut_match = /(.*)\[cut\s+&#39;(.+)&#39;\s*\](.*)/m.match( post_hash[:body] )
+    if cut_match
+      post_hash[:shorten] = cut_match[1]
+      post_hash[:cut] = cut_match[2]
+      post_hash[:body] = cut_match[1] + cut_match[3]
+    end
   end
 end

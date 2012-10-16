@@ -3,6 +3,6 @@
     %h1= post.title
     %p.date= post.created_at.strftime("%d.%m.%Y")
 
-  = post.body.html_safe
+  = post.shorten.try(:html_safe) || post.body.html_safe
   .more_link
-    %a{:href=>post_path(post)} More
+    %a{:href=>post_path(post)}= post.cut || "More"
