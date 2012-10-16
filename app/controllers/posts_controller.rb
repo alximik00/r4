@@ -111,11 +111,30 @@ class PostsController < ApplicationController
 
   def format_body(post)
     post.body = Render.render_html(post.raw_body)
-    post.preview_text = post.body.each_line.take(10).join
+
+    preview_post = post.each_line.take(10).join
+    preview_post+='```'  if preview_post.scan(/```/).size % 2 != 0
+    preview_post+='`'  if preview_post.scan(/[^`]?`[^`]?/).size % 2 != 0
+
+    preview_post = Render.render_html( preview_post )
+    preview_post = preview_post.gsub('<a', '<span')
+    preview_post = preview_post.gsub('</a>', '</span>')
+
+    post.preview_text = preview_post
   end
 
   def format_body_for_hash(params)
-    params[:body ] = Render.render_html(params[:raw_body])
-    params[:preview_text] = params[:body ].each_line.take(10).join
+    post = params[:raw_body]
+    params[:body ] = Render.render_html(post)
+
+    preview_post = post.each_line.take(10).join
+    preview_post+='```'  if preview_post.scan(/```/).size % 2 != 0
+    preview_post+='`'  if preview_post.scan(/[^`]?`[^`]?/).size % 2 != 0
+
+    preview_post = Render.render_html( preview_post )
+    preview_post = preview_post.gsub('<a', '<span')
+    preview_post = preview_post.gsub('</a>', '</span>')
+
+    params[:preview_text] = preview_post
   end
 end

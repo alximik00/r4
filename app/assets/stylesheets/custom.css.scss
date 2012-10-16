@@ -32,7 +32,7 @@ div.code_example {
   border-radius: 4px;
 }
 
-.thumbnail div.code_example {
+.thumbnail > div.code_example {
   width: 200px;
   height: 160px;
 }
@@ -112,8 +112,9 @@ a.thumbnail {
   margin-left: 3px;
   margin-top: 3px;
   margin-bottom: 8px;
-  color: #AAA;
+  color: #555;
   font-weight: bold;
+  font-size: large;
 }
 
 #post_title {
@@ -147,6 +148,10 @@ a.thumbnail {
 
 .remember_me input {
   vertical-align: middle;
+}
+
+.thumbnails > .thumbnail {
+  background-color: #e1e1e1;
 }
 
 @media (max-width: 980px) {
