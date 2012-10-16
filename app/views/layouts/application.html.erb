@@ -44,9 +44,10 @@
                     <a href="<%= path %>"> <%= name %></a>
                   </li>
               <% end %>
-
-
             </ul>
+            <% unless current_user || at_login_page? %>
+                <a href class="btn right login">Login</a>
+            <% end %>
           </div><!--/.nav-collapse -->
         </div>
       </div>
@@ -71,11 +72,11 @@
         <p>&copy; Denis Polulyakh 2012</p>
         <p>Written using <a href="http://rubyonrails.org/">Ruby on Rails 3.1</a></p>
         <p>Based on <a href="http://twitter.github.com/bootstrap/">bootstrap templates</a></p>
+        <p>Markup and code highlighting are made with <a href="https://github.com/vmg/redcarpet">redcarpet</a>
+          and <a href="https://github.com/tmm1/pygments.rb">pygments.rb</a>  </p>
       </div>
     </footer>
 
-    <!-- Le javascript
-        ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script type="/text/javascript" src="http://platform.twitter.com/widgets.js"></script>
     <script src="/assets/jquery.js"></script>

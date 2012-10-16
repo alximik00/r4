@@ -22,4 +22,9 @@ class ApplicationController < ActionController::Base
 
     {:menu=>urls, :admin_menu=>admin_urls }
   end
+
+  helper_method :at_login_page?
+  def at_login_page?
+    url_for == new_user_session_url || url_for == new_user_url
+  end
 end

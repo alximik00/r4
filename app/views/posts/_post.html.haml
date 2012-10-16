@@ -1,6 +1,7 @@
 %section{:id=>"post_#{post.id}"}
   .page-header
     %h1= post.title
+    %p.date= post.created_at.strftime("%d.%m.%Y")
 
   = post.body.html_safe
   .more_link

@@ -7,7 +7,7 @@
         - @post.errors.full_messages.each do |msg|
           %li.error= msg
   = f.hidden_field :lang_id
-  - if @post.new_record?
+  - if @post.new_record? && !current_user
     .field
       = f.label 'Your email'
       = f.text_field :user_email, :value => @post.user_email

@@ -25,15 +25,16 @@ class PostsController < ApplicationController
 
   # POST /posts
   def create
-    email = params[:post][:user_email]
     @post = Post.new(params[:post])
+    unless current_user
+      email = params[:post][:user_email]
+      email_validation = /^[-a-z0-9!#\%&'*+\/=?^_`{|}~]+(?:\.[-a-z0-9!#$\%&'*+\/=?^_`{|}~]+)*@(?:[a-z0-9]([-a-z0-9]{0,61}[a-z0-9])?\.)*(?:aero|arpa|asia|biz|cat|com|coop|edu|gov|info|int|jobs|mil|mobi|museum|name|net|org|pro|tel|travel|[a-z][a-z])$/
 
-    email_validation = /^[-a-z0-9!#\%&'*+\/=?^_`{|}~]+(?:\.[-a-z0-9!#$\%&'*+\/=?^_`{|}~]+)*@(?:[a-z0-9]([-a-z0-9]{0,61}[a-z0-9])?\.)*(?:aero|arpa|asia|biz|cat|com|coop|edu|gov|info|int|jobs|mil|mobi|museum|name|net|org|pro|tel|travel|[a-z][a-z])$/
-
-    if email.blank? || ! (email_validation =~ email)
-      @post.errors.add(:base, "Sorry, we need your correct email to save post")
-      render :new
-      return
+      if email.blank? || ! (email_validation =~ email)
+        @post.errors.add(:base, "Sorry, we need your correct email to save post")
+        render :new
+        return
+      end
     end
 
     format_body(@post)

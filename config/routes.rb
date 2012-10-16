@@ -1,4 +1,6 @@
 R4::Application.routes.draw do
+  devise_for :users
+
   root to: "home#index"
   match '/home'=>'home#index'
   match '/about'=>'home#about', :as => :home_about
@@ -8,7 +10,6 @@ R4::Application.routes.draw do
   match '/posts/discard' => 'posts#discard', :as => :posts_discard
   match '/posts/popular' => 'posts#index', :as=>:posts_popular, :mode=>:popular
   match '/posts/all' => 'posts#index', :as=>:posts_all, :mode=>:all
-
 
   resources :posts
   resources :users

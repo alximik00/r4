@@ -7,6 +7,7 @@
 
 body {
   padding: 0;
+  background-color: #EEEEEE;
 }
 
 .navbar-static-top {
@@ -93,7 +94,7 @@ h1 {
 .page-header {
   padding-bottom: 9px;
   margin: 20px 0 20px;
-  border-bottom: 1px solid #EEE;
+  border-bottom: 1px solid #D0D0D0;
 }
 
 .thumbnails {
@@ -117,6 +118,35 @@ a.thumbnail {
 
 #post_title {
   width: 600px;
+}
+
+.date {
+  font-size: smaller;
+  color: #999;
+  float: right;
+  position: relative;
+  bottom: 25px;
+}
+
+.right {
+  float: right;
+}
+
+.login {
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.15);
+  color: #777;
+}
+.remember_me {
+  margin-bottom: 10px;
+}
+
+.remember_me label {
+  display: inline;
+  vertical-align: middle;
+}
+
+.remember_me input {
+  vertical-align: middle;
 }
 
 @media (max-width: 980px) {
