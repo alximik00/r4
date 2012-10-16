@@ -17,6 +17,8 @@ gem 'pry-nav'
 gem "redcarpet"
 gem "pygments.rb"
 gem "devise"
+gem "kaminari"
+gem 'roboto'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -40,6 +42,8 @@ end
 
 group :development do
   gem 'mongrel', :platforms => :ruby , :require => false
+  gem 'haml-rails'
+  gem 'hpricot'
 end
 
 gem "rspec", "2.7", :group => [:development, :test]

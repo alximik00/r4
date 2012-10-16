@@ -44,17 +44,24 @@
                     <a href="<%= path %>"> <%= name %></a>
                   </li>
               <% end %>
+              <% unless current_user.try(:admin?) %>
+                <li>
+                    <%=  link_to "Suggest new", new_post_path, :class=> url_for == new_post_url ? "active":''%>
+                </li>
+              <% end %>
             </ul>
             <% if current_user %>
+                <div class="right" style="margin-left: 10px;">
+                  <%= link_to "Logout", destroy_user_session_path, :method=>:delete, :class=>"btn login" %>
+                </div>
+
                 <div class="vcenter_container right">
                     <div class="vcenter">
-                        Hi, <a href="<%= user_path(current_user) %>">
-                            <%=  current_user.email %>
-                        </a>!
-                    </div>
+                    Hi, <%= link_to current_user.email, edit_user_registration_path(current_user)%>!
+                </div>
                 </div>
             <% elsif !at_login_page? %>
-                <a href="<%= new_user_session_url %>" class="btn right login">Login</a>
+                <%= link_to "Login", new_user_session_url, :class=>"btn right login"%>
             <% end %>
           </div><!--/.nav-collapse -->
         </div>

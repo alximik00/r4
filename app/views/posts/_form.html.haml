@@ -24,12 +24,15 @@
   .actions
     = f.submit '  Save  ', :class=>'btn btn-primary'
     %span.spacer
+    - # see assets/javascripts/posts.js
     %a{:href=>posts_preview_path, :class=>'btn',   :id=>'edit_preview_button'}  Preview
 
 .hidden
   %form{:id=>"preview_form", :action=>posts_preview_path, :method=>'post', :target=>"_blank"}
     %textarea{:id=>"preview_body", :name=>"preview_body"}
-    %input{:id=>"preview_lang_id", :type=>'text', :name=>"preview_lang_id"}
+    %input{:id=>"preview_lang_id", :type=>'hidden', :name=>"preview_lang_id"}
     %input{:td=>"preview_ts", :name=>"preview_ts", :type=>'text'}
+    = token_tag form_authenticity_token
+
 
 

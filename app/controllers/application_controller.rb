@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
   helper_method :is_admin?
   def is_admin?
-    true
+    current_user.try(:admin?)
   end
 
   helper_method :menu_urls
@@ -27,4 +27,8 @@ class ApplicationController < ActionController::Base
   def at_login_page?
     url_for == new_user_session_url || url_for == new_user_url
   end
+
+  #def after_sign_out_path_for(user)
+  #  posts_path
+  #end
 end

@@ -1,5 +1,11 @@
 .span9
+  .pagination-centered
+    = paginate @posts, :window => 2
+
   - @posts.each do |post|
     =render post
+
+  .pagination-centered
+    = paginate @posts, :window => 2
 
 =render 'preview_area'

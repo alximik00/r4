@@ -1,0 +1,7 @@
+- content_for(:head) do
+  = stylesheet_link_tag "uvthemes/twilight", :media => "all"
+%h1 Home#index
+%p Find me in app/views/home/index.html.erb
+  Sample
+.code_block_small.twilight
+  = @sample.html_safe

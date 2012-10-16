@@ -1,4 +1,7 @@
 class Post < ActiveRecord::Base
+
+  max_paginates_per 100
+
   LANG_RUBY = 1
   LANG_ERB = 2
   LANG_HAML = 3
@@ -19,7 +22,7 @@ class Post < ActiveRecord::Base
   belongs_to :user
   attr_accessor :user_email
 
-  default_scope :conditions=>{:confirmed=>true}
+  default_scope :conditions=>{:confirmed=>true}, :order=>'created_at DESC'
   scope :popular, :order=>'views_count DESC'
 
   def decided?

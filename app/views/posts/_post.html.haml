@@ -1,8 +1,11 @@
 %section{:id=>"post_#{post.id}"}
   .page-header
-    %h1= post.title
-    %p.date= post.created_at.strftime("%d.%m.%Y")
+    %a{:href=>post_path(post)}
+      %h1= post.title
+    %p.date= post.created_at.strftime('%d.%m.%Y %H:%M')
+    %p.views= "#{post.views_count} views"
 
   = post.shorten.try(:html_safe) || post.body.html_safe
-  .more_link
-    %a{:href=>post_path(post)}= post.cut || "More"
+  - if post.cut
+    .more_link
+      %a{:href=>post_path(post)}= post.cut.html_safe

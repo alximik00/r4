@@ -1,5 +1,9 @@
 R4::Application.routes.draw do
-  devise_for :users
+  mount_roboto
+
+  devise_for :users do
+    root to: "home#index"
+  end
 
   root to: "home#index"
   match '/home'=>'home#index'
