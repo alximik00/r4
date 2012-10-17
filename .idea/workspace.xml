@@ -2,34 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dc9283d9-fee6-421d-9d82-4a8a538f53d1" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/views/home/index.html.haml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/db/migrate/20121005214829_add_previews.rb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/uvthemes/active4d.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/uvthemes/all_hallows_eve.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/uvthemes/amy.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/uvthemes/blackboard.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/uvthemes/brilliance_black.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/uvthemes/brilliance_dull.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/uvthemes/cobalt.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/uvthemes/dawn.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/uvthemes/eiffel.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/uvthemes/espresso_libre.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/uvthemes/idle.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/uvthemes/iplastic.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/uvthemes/lazy.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/uvthemes/mac_classic.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/uvthemes/magicwb_amiga.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/uvthemes/pastels_on_dark.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/uvthemes/slush_poppies.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/uvthemes/spacecadet.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/uvthemes/sunburst.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/uvthemes/twilight.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/uvthemes/zenburnesque.css" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/r4.iml" afterPath="$PROJECT_DIR$/.idea/r4.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile.lock" afterPath="$PROJECT_DIR$/Gemfile.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/home_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/home_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/deploy.rb" afterPath="$PROJECT_DIR$/config/deploy.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/database.yml" afterPath="$PROJECT_DIR$/config/database.yml" />
     </list>
     <ignored path="r4.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -80,10 +53,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="home_controller.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="home_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/home_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="9" selection-start="9" selection-end="9" vertical-scroll-proportion="0.0">
+            <state line="7" column="22" selection-start="112" selection-end="112" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="database.yml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/config/database.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="22" column="14" selection-start="536" selection-end="536" vertical-scroll-proportion="0.9268293">
               <folding />
             </state>
           </provider>
@@ -153,7 +135,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/README" />
         <option value="$PROJECT_DIR$/config/environments/production.rb" />
         <option value="$PROJECT_DIR$/config/routes.rb" />
         <option value="/Rails r4: development" />
@@ -169,6 +150,7 @@
         <option value="$PROJECT_DIR$/app/views/layouts/preview.html.haml" />
         <option value="$PROJECT_DIR$/config/deploy.rb" />
         <option value="$PROJECT_DIR$/app/controllers/home_controller.rb" />
+        <option value="$PROJECT_DIR$/config/database.yml" />
       </list>
     </option>
   </component>
@@ -416,7 +398,7 @@
         </COVERAGE_PATTERN>
       </EXTENSION>
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="SCRIPT_ARGS" VALUE="" />
-      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="PORT" VALUE="3001" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="PORT" VALUE="3002" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="IP" VALUE="0.0.0.0" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="DUMMY_APP" VALUE="test/dummy" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="RAILS_SERVER_TYPE" VALUE="mongrel" />
@@ -573,15 +555,15 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-3" y="25" width="1926" height="1017" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32882884" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25320512" sideWeight="0.6711712" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32882884" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25320512" sideWeight="0.5653153" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15224358" sideWeight="0.6711712" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4501643" sideWeight="0.9967949" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15224358" sideWeight="0.5653153" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4346847" sideWeight="0.9967949" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.49839914" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3112513" sideWeight="0.9989858" order="2" side_tool="false" content_ui="tabs" />
@@ -753,7 +735,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/home_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="9" selection-start="9" selection-end="9" vertical-scroll-proportion="0.0">
+        <state line="7" column="22" selection-start="112" selection-end="112" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/database.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="14" selection-start="536" selection-end="536" vertical-scroll-proportion="0.9268293">
           <folding />
         </state>
       </provider>

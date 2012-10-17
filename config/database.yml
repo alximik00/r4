@@ -18,3 +18,8 @@ test: &development
 production: &development
   adapter: mysql2
   database: r4_production
+  username: r4_user
+  password: r4_password
+  encoding: utf8
+  redis_db: 0
+  reconnect: true
