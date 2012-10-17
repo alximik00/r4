@@ -1,8 +1,10 @@
 class PostsController < ApplicationController
-  before_filter :authenticate_user!, :only=>[:destroy, :confirm, :discard]
+  skip_before_filter :verify_authenticity_token, :only => [:destroy]
 
   # GET /posts
   def index
+    params[:mode]=nil if params[:mode]==:all && !is_admin?
+
     @posts =
       case params[:mode]
         when :all then Post.unscoped.page params[:page]
@@ -16,7 +18,7 @@ class PostsController < ApplicationController
   # GET /posts/1
   def show
     @post = get_post
-    require_user unless @post.confirmed? || @post.user_id == current_user.try(:id)
+    require_user unless is_admin? || @post.confirmed? || @post.user_id == current_user.try(:id)
 
     @post.update_attribute(:views_count, @post.views_count + 1)
     fetch_popular
@@ -42,7 +44,8 @@ class PostsController < ApplicationController
     end
 
     format_body(@post)
-    @post.confirmed = current_user.try(:admin?)
+    @post.confirmed = false
+    @post.user_id = current_user.try(:id)
     if @post.save
       redirect_to @post, notice: 'Post was successfully created.'
     else
@@ -71,14 +74,10 @@ class PostsController < ApplicationController
 
   # DELETE /posts/1
   def destroy
-    @post = get_post
-    require_user and return unless able_to_edit?
-
+    require_user and return unless is_admin?
+    @post = Post.unscoped.find(params[:id])
     @post.destroy
-    respond_to do |format|
-      format.html { redirect_to posts_url }
-      format.json { head :ok }
-    end
+    redirect_to posts_url
   end
 
   def preview

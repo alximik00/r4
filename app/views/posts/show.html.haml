@@ -1,23 +1,31 @@
 .span9
   %section{:id=>"post_#{@post.id}", :class=>"post"}
-    = link_to 'Back to main', posts_path
+    %p
+      = link_to 'Back to main', posts_path
 
     .page-header
       %h1= @post.title
       %p.date= @post.created_at.strftime('%d.%m.%Y %H:%M')
 
     = @post.body.html_safe
-  -if able_to_edit?
+    -if able_to_edit?
+      %br
+      %br
+      = link_to 'Edit', edit_post_path(@post), :class=>'btn btn-primary '
+      %span.spacer
+      - unless @post.confirmed?
+        %a{:href=>posts_confirm_path(:id=>@post.id), :class=>'btn btn-success', :id=>'edit_confirm_button'}  Confirm
+      - if @post.confirmed
+        %a{:href=>posts_discard_path(:id=>@post.id), :class=>'btn btn-danger',  :id=>'edit_discard_button'}  Discard
+    -if is_admin?
+      = link_to( raw('<i class="icon-remove icon-white"></i> Delete'), post_url(@post), :confirm => 'Are you sure?', :method => :delete, :class=>'btn btn-danger')
     %br
     %br
-    = link_to 'Edit', edit_post_path(@post), :class=>'btn btn-primary '
-    %span.spacer
-    - unless @post.confirmed?
-      %a{:href=>posts_confirm_path(:id=>@post.id), :class=>'btn btn-success', :id=>'edit_confirm_button'}  Confirm
-    - if @post.confirmed
-      %a{:href=>posts_discard_path(:id=>@post.id), :class=>'btn btn-danger',  :id=>'edit_discard_button'}  Discard
+    %p
+      = link_to 'Back to main', posts_path
 
 =render 'preview_area'
 
 :javascript
   window.postId = '#{@post.id}';
+
