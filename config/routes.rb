@@ -2,10 +2,10 @@ R4::Application.routes.draw do
   mount_roboto
 
   devise_for :users do
-    root to: "home#index"
+    root to: "posts#index"
   end
 
-  root to: "home#index"
+  root to: "posts#index"
   match '/home'=>'home#index'
   match '/about'=>'home#about', :as => :home_about
 

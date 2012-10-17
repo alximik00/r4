@@ -10,8 +10,6 @@ gem 'mysql2'
 gem 'nokogiri'
 gem 'haml'
 gem 'redis'
-gem 'loginza'
-gem 'ultraviolet'
 gem 'pry'
 gem 'pry-nav'
 gem "redcarpet"
@@ -19,6 +17,7 @@ gem "pygments.rb"
 gem "devise"
 gem "kaminari"
 gem 'roboto'
+#gem 'loginza'
 
 # Gems used only for assets and not required
 # in production environments by default.
