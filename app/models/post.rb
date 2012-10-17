@@ -23,7 +23,10 @@ class Post < ActiveRecord::Base
   attr_accessor :user_email
 
   default_scope :conditions=>{:confirmed=>true}, :order=>'created_at DESC'
-  scope :popular, :order=>'views_count DESC'
+
+  def self.popular
+    unscoped.order('views_count DESC').where('confirmed =1')
+  end
 
   def decided?
     self.confirmed? && self.discarded?
