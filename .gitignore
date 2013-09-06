@@ -13,3 +13,8 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+/.idea/workspace.xml
+/.idea/misc.xml
+/.idea/dataSources.*
+/.idea/.generators
+/.idea/.rakeTasks

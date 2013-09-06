@@ -106,7 +106,7 @@ class PostsController < ApplicationController
 
   helper_method :able_to_edit?
   def able_to_edit?
-    ( @post.user_id.present? && @post.user_id == current_user.id ) || is_admin?
+    ( @post.user_id.present? && @post.user_id == current_user && current_user.id ) || is_admin?
   end
 
   private
