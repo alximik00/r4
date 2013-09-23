@@ -4,7 +4,6 @@ development:
   password: r4_password
   database: r4_dev
   encoding: utf8
-  redis_db: 0
   reconnect: true
 
 # Warning: The database defined as "test" will be erased and
@@ -21,5 +20,4 @@ production: &development
   username: r4_user
   password: r4_password
   encoding: utf8
-  redis_db: 0
   reconnect: true

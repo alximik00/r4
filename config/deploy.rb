@@ -13,9 +13,8 @@ default_run_options[:pty] = true   # Must be set for the password prompt from gi
 set :deploy_via, :remote_cache
 set :keep_releases, 2
 
-role :web, "rubyrecipes.info"
-role :app, "rubyrecipes.info"
-role :db,  "rubyrecipes.info", :primary => true # This is where Rails migrations will run
+
+server '192.81.223.184', :app, :web, :db, :primary=>true
 
 set :scm, :git # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
 set :repository, "git://github.com/alximik00/r4.git"  # Your clone URL

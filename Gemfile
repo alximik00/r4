@@ -9,7 +9,6 @@ gem 'rails', '3.1.3'
 gem 'mysql2'
 gem 'nokogiri'
 gem 'haml'
-gem 'redis'
 gem 'pry'
 gem 'pry-nav'
 gem "redcarpet"
