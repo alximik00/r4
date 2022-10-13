@@ -22,7 +22,7 @@ class Post < ActiveRecord::Base
   belongs_to :user
   attr_accessor :user_email
 
-  default_scope :conditions=>{:confirmed=>true}, :order=>'created_at DESC'
+  default_scope -> { where(confirmed: true).order('created_at DESC') }
 
   def self.popular
     unscoped.order('views_count DESC').where('confirmed =1')

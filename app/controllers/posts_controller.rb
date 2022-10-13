@@ -31,19 +31,19 @@ class PostsController < ApplicationController
 
   # POST /posts
   def create
-    @post = Post.new(params[:post])
+    post_params = permitted_post_params
+    format_body_for_hash(post_params)
+    @post = Post.new(post_params)
     unless current_user
       email = params[:post][:user_email]
       email_validation = /^[-a-z0-9!#\%&'*+\/=?^_`{|}~]+(?:\.[-a-z0-9!#$\%&'*+\/=?^_`{|}~]+)*@(?:[a-z0-9]([-a-z0-9]{0,61}[a-z0-9])?\.)*(?:aero|arpa|asia|biz|cat|com|coop|edu|gov|info|int|jobs|mil|mobi|museum|name|net|org|pro|tel|travel|[a-z][a-z])$/
 
       if email.blank? || ! (email_validation =~ email)
         @post.errors.add(:base, "Sorry, we need your correct email to save post")
-        render :new
-        return
+        return render :new
       end
     end
 
-    format_body(@post)
     @post.confirmed = false
     @post.user_id = current_user.try(:id)
     if @post.save
@@ -64,8 +64,9 @@ class PostsController < ApplicationController
     @post = get_post
     require_user and return unless able_to_edit?
 
-    format_body_for_hash(params[:post])
-    if @post.update_attributes(params[:post])
+    post_params = permitted_post_params
+    format_body_for_hash(post_params)
+    if @post.update_attributes(post_params)
       redirect_to @post, notice: 'Post was successfully updated.'
     else
       render action: "edit"
@@ -172,5 +173,9 @@ class PostsController < ApplicationController
     preview_post = preview_post.gsub("</a>", "</span>")
 
     [post_body, shorten, cut, preview_post]
+  end
+
+  def permitted_post_params
+    params.require(:post).permit(:lang_id, :title, :raw_body)
   end
 end

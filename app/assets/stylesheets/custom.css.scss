@@ -143,13 +143,10 @@ a.thumbnail {
 .vcenter_container {
   display: table;
   height: 40px;
-  #position: relative;
   overflow: hidden;
 }
 
 .vcenter {
-  #position: absolute;
-  #top: 50%;
   display: table-cell;
   vertical-align: middle;
 }

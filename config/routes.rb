@@ -1,19 +1,19 @@
 R4::Application.routes.draw do
-  mount_roboto
+  #mount_roboto
 
   devise_for :users do
     root to: "posts#index"
   end
 
   root to: "posts#index"
-  match '/home'=>'home#index'
-  match '/about'=>'home#about', :as => :home_about
+  get '/home'=>'home#index'
+  get '/about'=>'home#about', :as => :home_about
 
-  match '/posts/preview' => 'posts#preview', :as => :posts_preview
-  match '/posts/confirm' => 'posts#confirm', :as => :posts_confirm
-  match '/posts/discard' => 'posts#discard', :as => :posts_discard
-  match '/posts/popular' => 'posts#index', :as=>:posts_popular, :mode=>:popular
-  match '/posts/all' => 'posts#index', :as=>:posts_all, :mode=>:all
+  post '/posts/preview' => 'posts#preview', :as => :posts_preview
+  get '/posts/confirm' => 'posts#confirm', :as => :posts_confirm
+  get '/posts/discard' => 'posts#discard', :as => :posts_discard
+  get '/posts/popular' => 'posts#index', :as=>:posts_popular, :mode=>:popular
+  get '/posts/all' => 'posts#index', :as=>:posts_all, :mode=>:all
 
   resources :posts
   resources :users
