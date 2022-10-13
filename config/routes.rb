@@ -9,7 +9,7 @@ R4::Application.routes.draw do
   get '/home'=>'home#index'
   get '/about'=>'home#about', :as => :home_about
 
-  get '/posts/preview' => 'posts#preview', :as => :posts_preview
+  post '/posts/preview' => 'posts#preview', :as => :posts_preview
   get '/posts/confirm' => 'posts#confirm', :as => :posts_confirm
   get '/posts/discard' => 'posts#discard', :as => :posts_discard
   get '/posts/popular' => 'posts#index', :as=>:posts_popular, :mode=>:popular
